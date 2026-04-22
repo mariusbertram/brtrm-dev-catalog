@@ -1,0 +1,8 @@
+schema: olm.semver
+GenerateMajorChannels: true
+GenerateMinorChannels: true
+Stable:
+  Bundles:
+    - Image: ghcr.io/mariusbertram/oc-mirror-operator-bundle:0.0.2
+    # Add new versions below:
+    # - Image: ghcr.io/mariusbertram/oc-mirror-operator-bundle:0.0.3
