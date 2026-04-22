@@ -1,0 +1,18 @@
+schema: olm.template.basic
+entries:
+  - schema: olm.package
+    name: webhook-operator
+    defaultChannel: stable
+    description: A Kubernetes operator for managing IP rules
+  - schema: olm.channel
+    package: webhook-operator
+    name: alpha
+    entries:
+      - name: webhook-operator.v0.0.1
+  - schema: olm.channel
+    package: webhook-operator
+    name: stable
+    entries:
+      - name: webhook-operator.v0.0.1
+  - schema: olm.bundle
+    image: quay.io/olmtest/webhook-operator-bundle:0.0.3

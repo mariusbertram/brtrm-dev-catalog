@@ -1,0 +1,136 @@
+name: Build and Push FBC Catalog
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'catalog/**'
+      - '.github/workflows/build-catalog.yml'
+      - 'scripts/generate-fbc.py'
+  workflow_dispatch:
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}/catalog
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install pyyaml
+
+      - name: Download opm CLI
+        run: |
+          OPM_VERSION=v1.61.0
+          curl -L https://github.com/operator-framework/operator-registry/releases/download/${OPM_VERSION}/linux-amd64-opm -o /usr/local/bin/opm
+          chmod +x /usr/local/bin/opm
+          opm version
+
+      - name: Generate FBC from templates
+        run: |
+          echo "=== Generating FBC per operator sequentially ==="
+          python scripts/generate-fbc.py
+          
+          echo ""
+          echo "=== FBC Structure ==="
+          find catalog/fbc -name "*.yaml" | sort
+          
+          echo ""
+          echo "=== Operator Summary ==="
+          for dir in catalog/fbc/*/; do
+            if [ -d "$dir" ]; then
+              operator=$(basename "$dir")
+              echo "Operator: $operator"
+              if [ -f "${dir}index.yaml" ]; then
+                echo "  Objects: $(grep -c '^schema:' ${dir}index.yaml)"
+                grep "^schema:" "${dir}index.yaml" | sort | uniq -c | sed 's/^/    /'
+              fi
+            fi
+          done
+
+      - name: Validate FBC
+        run: |
+          echo "=== Validating FBC ==="
+          if [ ! -d "catalog/fbc" ]; then
+            echo "ERROR: catalog/fbc directory does not exist!"
+            exit 1
+          fi
+          
+          # Check if any operator directories exist
+          if [ -z "$(find catalog/fbc -mindepth 1 -maxdepth 1 -type d)" ]; then
+            echo "ERROR: No operator directories found in catalog/fbc!"
+            ls -la catalog/fbc/
+            exit 1
+          fi
+          
+          echo "FBC directory structure:"
+          ls -la catalog/fbc/
+          
+          echo ""
+          echo "Running opm validate..."
+          opm validate catalog/fbc
+
+      - name: Log in to Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata
+        id: meta
+        run: |
+          # Generate image tags
+          TIMESTAMP=$(date +%Y%m%d%H%M%S)
+          echo "timestamp=${TIMESTAMP}" >> $GITHUB_OUTPUT
+          echo "short_sha=$(echo ${{ github.sha }} | cut -c1-7)" >> $GITHUB_OUTPUT
+
+      - name: Build and push catalog image
+        run: |
+          IMAGE_TAG="${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}"
+          cd catalog
+          
+          echo "=== Generating Dockerfile ==="
+          opm generate dockerfile fbc 
+          
+          echo ""
+          echo "=== Generated Dockerfile ==="
+          cat fbc.Dockerfile
+          
+          echo ""
+          echo "=== Build Context Contents ==="
+          ls -la fbc/
+          
+          echo ""
+          echo "=== Building Docker Image ==="
+          docker build -f fbc.Dockerfile -t ${IMAGE_TAG}:latest -t ${IMAGE_TAG}:${{ steps.meta.outputs.timestamp }} -t ${IMAGE_TAG}:${{ steps.meta.outputs.short_sha }} .
+          
+          echo ""
+          echo "=== Pushing Images ==="
+          docker push ${IMAGE_TAG}:latest
+          docker push ${IMAGE_TAG}:${{ steps.meta.outputs.timestamp }}
+          docker push ${IMAGE_TAG}:${{ steps.meta.outputs.short_sha }}
+
+      - name: Output image details
+        run: |
+          echo "### Catalog Image Published " >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Images pushed to:" >> $GITHUB_STEP_SUMMARY
+          echo "- \`${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest\`" >> $GITHUB_STEP_SUMMARY
+          echo "- \`${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.meta.outputs.timestamp }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- \`${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.meta.outputs.short_sha }}\`" >> $GITHUB_STEP_SUMMARY

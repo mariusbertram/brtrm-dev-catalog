@@ -1,0 +1,10 @@
+schema: olm.semver
+GenerateMajorChannels: true
+GenerateMinorChannels: true
+Stable:
+  Bundles:
+    - Image: ghcr.io/mariusbertram/ip-rule-operator-bundle:v0.0.1
+    # Weitere Versionen können hier hinzugefügt werden
+    # - Image: ghcr.io/mariusbertram/ip-rule-operator-bundle:v0.1.0
+    # - Image: ghcr.io/mariusbertram/ip-rule-operator-bundle:v1.0.0
+
