@@ -31,7 +31,7 @@ class SequentialFBCGenerator:
         operators = {}
 
         for operator_dir in self.catalog_dir.iterdir():
-            if not operator_dir.is_dir() or operator_dir.name == 'fbc':
+            if not operator_dir.is_dir() or operator_dir.name in ('fbc', 'webhook-operator'):
                 continue
 
             operator_yaml = operator_dir / "operator.yaml"
