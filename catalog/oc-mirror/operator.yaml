@@ -1,0 +1,6 @@
+schema: olm.semver
+GenerateMajorChannels: true
+GenerateMinorChannels: true
+Stable:
+  Bundles:
+    - Image: ghcr.io/mariusbertram/oc-mirror-operator-bundle@sha256:6bd87879dea98a53566e464b594c022978660678ed4e44a5a37ad2c891bd4d45
