@@ -3,4 +3,5 @@ GenerateMajorChannels: true
 GenerateMinorChannels: true
 Stable:
   Bundles:
-    - Image: ghcr.io/mariusbertram/oc-mirror-operator-bundle@sha256:6bd87879dea98a53566e464b594c022978660678ed4e44a5a37ad2c891bd4d45
+  - Image: ghcr.io/mariusbertram/oc-mirror-operator-bundle@sha256:6bd87879dea98a53566e464b594c022978660678ed4e44a5a37ad2c891bd4d45
+  - Image: ghcr.io/mariusbertram/oc-mirror-operator-bundle@sha256:b4b68ee1ba654325069657f31818e2449735ec4cbe7303d8380b0d24b9c9f9bf
