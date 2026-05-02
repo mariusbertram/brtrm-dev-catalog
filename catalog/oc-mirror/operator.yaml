@@ -3,16 +3,8 @@ GenerateMajorChannels: true
 GenerateMinorChannels: true
 Stable:
   Bundles:
-  - Image: ghcr.io/mariusbertram/oc-mirror-operator-bundle@sha256:6bd87879dea98a53566e464b594c022978660678ed4e44a5a37ad2c891bd4d45
-  - Image: ghcr.io/mariusbertram/oc-mirror-operator-bundle@sha256:b4b68ee1ba654325069657f31818e2449735ec4cbe7303d8380b0d24b9c9f9bf
-  - Image: ghcr.io/mariusbertram/oc-mirror-operator-bundle@sha256:7aed57c4f26e6dada5a5ec3a64dad1fddca681e510ce8fb5f8804fa23b878ef8
-  - Image: ghcr.io/mariusbertram/oc-mirror-operator-bundle@sha256:137adc08b9e6dead7b3673e70f005137aabf9deb8816fdee5338681bc821772a
-  - Image: ghcr.io/mariusbertram/oc-mirror-operator-bundle@sha256:daa01ff854ffd2ad385a00986b0cbb840b91007bd361431afe6b3f311d653a07
-  - Image: ghcr.io/mariusbertram/oc-mirror-operator-bundle@sha256:ef9d683b41cf886efe3bcdecf56f809c30a2abe27ac548113a10c211b97fc784
-  - Image: ghcr.io/mariusbertram/oc-mirror-operator-bundle@sha256:0dcbe1db4a2f71b816b27a093b944d9046510c3c0563119b6fec5c629a14871f
-  - Image: ghcr.io/mariusbertram/oc-mirror-operator-bundle@sha256:2cba339eb30b4c3e1ce2065f603b938c2f6a9877c0d63ae30e4a2f2069d4bafb
   - Image: ghcr.io/mariusbertram/oc-mirror-operator-bundle@sha256:2162b46e57e535fb0daadc4e3afa260497538af4832739b9acefe7c6edafa89f
   - Image: ghcr.io/mariusbertram/oc-mirror-operator-bundle@sha256:498119b3461b192c57d98ef813773edd63e767207dc2a54acfe0aa93b335afb1
   - Image: ghcr.io/mariusbertram/oc-mirror-operator-bundle@sha256:8c078b55443da906274c54988e99c8a61b8a80f2a2b33ca45fa1a351e7ffa91a
   - Image: ghcr.io/mariusbertram/oc-mirror-operator-bundle@sha256:a5bec3f2c5124bb7ff44f664bceb31a23469724f5a310f11ab3bbeba799798d7
-  - Image: ghcr.io/mariusbertram/oc-mirror-operator-bundle@sha256:e2f7fd931d1f0aeca3f0158689b802eab6e01352c24c530dc675d8200f0970af
+  - Image: ghcr.io/mariusbertram/oc-mirror-operator-bundle@sha256:36a0b089931ac87cac1662fcf9239831a3e593dd57f01a12a440773fdd7155b1
