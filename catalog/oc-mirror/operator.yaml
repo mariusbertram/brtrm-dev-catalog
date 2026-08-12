@@ -12,3 +12,4 @@ Stable:
   - Image: ghcr.io/mariusbertram/oc-mirror-operator-bundle@sha256:26ea8bc37df32b80d0688ef8a4b3042fadcbb099399119bad071794134f27e8d
   - Image: ghcr.io/mariusbertram/oc-mirror-operator-bundle@sha256:4220aa2e76b124d5207d02964d0903a90be0d12c05bc00e291f72f9e7dd211fe
   - Image: ghcr.io/mariusbertram/oc-mirror-operator-bundle@sha256:21890cb026255b227427eb7bd918bbca41e02319c73b00120d8973349473a6da
+  - Image: ghcr.io/mariusbertram/oc-mirror-operator-bundle@sha256:bb4aec6d20f2684fd0a7e1ec70f69b4c90e65652d184f857c4eb6e2747b722ae
