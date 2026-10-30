@@ -1,0 +1,45 @@
+schema: olm.semver
+GenerateMajorChannels: true
+GenerateMinorChannels: true
+Stable:
+  Bundles:
+  # 3.0.0
+  - Image: registry.connect.redhat.com/gitlab/gitlab-operator-bundle@sha256:99f559207b29041abc931d9fd994f66e0e9eb6c6a6932c7d15ca33412aeb4796
+  # 3.0.1
+  - Image: registry.connect.redhat.com/gitlab/gitlab-operator-bundle@sha256:f309c97f38e7dc6999ba8ee9cb8869528c0513549474f96402e126d21e8a9102
+  # 3.0.2
+  - Image: registry.connect.redhat.com/gitlab/gitlab-operator-bundle@sha256:fb1a8f7e0f8ed9e15b8e231c796bc55a27542dd8e6c022bb5122e0097da439c2
+  # 3.1.0
+  - Image: registry.connect.redhat.com/gitlab/gitlab-operator-bundle@sha256:ed9a2a2cc470b461b4acd26e5f859659ced7b31dc6128f7c1106c744212fc451
+  # 3.1.1
+  - Image: registry.connect.redhat.com/gitlab/gitlab-operator-bundle@sha256:487a4f175c1610ae81f30f61f182d4ba3fd0883ee3ee90cc5411f11695eb1744
+  # 3.2.0
+  - Image: registry.connect.redhat.com/gitlab/gitlab-operator-bundle@sha256:d1e5dea9a5eca9f1417b8c953ab937fa85f6bd6d39a107eb2b71327a4c015c68
+  # 3.2.1
+  - Image: registry.connect.redhat.com/gitlab/gitlab-operator-bundle@sha256:f98dd912de699e8a2d599ea792cf14b1bc3451f4cf573212df2193a88bf0cc42
+  # 3.2.2
+  - Image: registry.connect.redhat.com/gitlab/gitlab-operator-bundle@sha256:4de208aa9716ccf1a64c0cc49fb292294481c35ed4d88e404a24f96728102b63
+  # 3.2.3
+  - Image: registry.connect.redhat.com/gitlab/gitlab-operator-bundle@sha256:87e7d8db51b9bc335b814f4c0fbb27dffa4f7b90e3738bf5874aaf9b9c60b5c3
+  # 3.2.4
+  - Image: registry.connect.redhat.com/gitlab/gitlab-operator-bundle@sha256:fe1bc938913a13b16d52479cadaf268ed6e652109014fa5ac53bcdf30598a69c
+  # 3.3.0
+  - Image: registry.connect.redhat.com/gitlab/gitlab-operator-bundle@sha256:0c6702a471a8529b2fc53feb597faaf6f6b3bb445c0e48f5d7b621e38bfa26b6
+  # 3.3.1
+  - Image: registry.connect.redhat.com/gitlab/gitlab-operator-bundle@sha256:6fcf3dc0120191f6e3a247d662830c0311bc95d99542e5fdb08df5c85d8c0e2e
+  # 3.3.2
+  - Image: registry.connect.redhat.com/gitlab/gitlab-operator-bundle@sha256:31aa68c46e41e03a21d994d51108e6c7bcf0552c2a6f56dd8a23cbcaae319d6e
+  # 3.4.0
+  - Image: registry.connect.redhat.com/gitlab/gitlab-operator-bundle@sha256:d96004137782226870f37f0ea8c1db77d7bee0ce777d8c7eb5de09286264180d
+  # 3.4.1
+  - Image: registry.connect.redhat.com/gitlab/gitlab-operator-bundle@sha256:dd3f5696effa2d035d2418743ccf9b84b9ec96594c0e96da4c3a6e135332c7f5
+  # 3.4.2
+  - Image: registry.connect.redhat.com/gitlab/gitlab-operator-bundle@sha256:e612d49d3b0dbe994921557e757387f5a84940181979d91ba86ebb941f48f057
+  # 3.5.0
+  - Image: registry.connect.redhat.com/gitlab/gitlab-operator-bundle@sha256:b5f34c7cb7bf33ff632aac6214420b7cb00b0dfe5faef38cab1cf2074a805141
+  # 3.5.1
+  - Image: registry.connect.redhat.com/gitlab/gitlab-operator-bundle@sha256:a6789bcc8549383a00bc2e6219d9ba06df514ec84126a43f0cfe148d087f3dbb
+  # 3.5.2
+  - Image: registry.connect.redhat.com/gitlab/gitlab-operator-bundle@sha256:3f4ae984b7de76d2c477878ff69c6c99d66387fc689174fa4aa5ab7960384ed6
+  # 3.5.3
+  - Image: registry.connect.redhat.com/gitlab/gitlab-operator-bundle@sha256:b26754e0cf5ad6509b3633443e8c59aea7f2b156b4a72ade194ef26d10ad3940

@@ -41,6 +41,18 @@ jobs:
           chmod +x /usr/local/bin/opm
           opm version
 
+      - name: Configure Red Hat registry pull secret
+        env:
+          REDHAT_PULL_SECRET: ${{ secrets.REDHAT_PULL_SECRET }}
+        run: |
+          if [ -z "$REDHAT_PULL_SECRET" ]; then
+            echo "ERROR: secret REDHAT_PULL_SECRET is not set"
+            exit 1
+          fi
+          mkdir -p ~/.docker
+          echo "$REDHAT_PULL_SECRET" > ~/.docker/config.json
+          chmod 600 ~/.docker/config.json
+
       - name: Generate FBC from templates
         run: |
           echo "=== Generating FBC per operator sequentially ==="
